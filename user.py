@@ -20,6 +20,8 @@ class User:
         """
         if userName == self.user_name and password == self.password:
             isLoggedIn = True
+        else:
+            isLoggedIn = False    
 
     def saveUser(self):
         """
@@ -42,18 +44,22 @@ class User:
 
 
 class Credentials:
+    
+    credentials = []
 
-    def __init__(parameter_list):
+    def __init__(self,account,accountUsername,accountPassword):
         """
         docstring
         """
-        pass
+        self.account = account
+        self.accountUsername = accountUsername
+        self.accountPassword = accountPassword
 
-    def saveCredential(parameter_list):
+    def saveCredential(self):
         """
         docstring
         """
-        pass
+        Credentials.credentials.append(self)
 
     def searchCredential(parameter_list):
         """
@@ -83,4 +89,8 @@ class Credentials:
         """
         docstring
         """
+        pass
+
+
+    if __name__ == "__main__":
         pass
