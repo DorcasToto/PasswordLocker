@@ -63,6 +63,13 @@ class Credentials:
         """
         Credentials.credentials.append(self)
 
+    def createCredential(accountName, accountUsername, accountPassword):
+        """
+        docstring
+        """
+       newCredential = Credentials(accountName,accountUsername,accountPassword)
+       return newCredential
+
     def searchCredential(self, accountName):
         """
         docstring
@@ -167,13 +174,59 @@ class Credentials:
             elif shortCode == 'ex':
 
                 print("Bye. See you some other time.")
-            
+
             else:
                 print("Invalid shortcode\n")
 
         while True:
             print("What would like to do?\n\n Use these shortcodes to proceed\n 1. nc - Create new Credential \n 2. ds - Display existing Credential\n 3. fc - Find a credential \n 4. dc = Delete an existing Credential \n 5. ex - Exit Application")
 
-            
+            shortCode == input()
+
+            if shortCode == 'nc':
+                print("New Credential Account")
+                print("*"*100)
+                print("\n")
+
+                print("Account Name e.g Facebook")
+                AccountName = input()
+
+                print("Account UserName")
+                accountUserName = input()
+
+                while True:
+                    print("1. op - You want to type your own password?\n 2. sg - System generated passwords")
+                    accountPassword = input().lower()
+
+                    if accountPassword =='op':
+                        break
+                    elif accountPassword == 'sg':
+                        Credentials.passwordGenerate()
+                        break
+
+                    else:
+                        print("Password Invalid")
+
+                newC = Credentials.createCredential(AccountName,accountUserName,accountPassword)
+                Credentials.saveCredential(newC)
+        
+            elif shortCode == 'ds':
+                if Credentials.displayCredential():
+
+                    print("List of your credentials include:")
+                    for credential in Credentials.credentials
+                    print (f"Account Name : {credential.accountName}\n Account Username : {credential.accountUserName}\n Account Password: {credential.accountPassword}\n")
+                    
+                else:
+                    print("You do not have saved credentials at the moment ")    
+
+            elif shortCode == 'fc':
+                pass
+
+            elif shortCode == 'dc':
+                pass
+
+            elif shortCode == 'ex':
+                pass
 
             break
