@@ -81,7 +81,7 @@ class Credentials:
         """
         return Credentials.credentials
 
-    def credentialExist(self,accountName):
+    def credentialExist(self, accountName):
         """
         docstring
         """
@@ -105,14 +105,19 @@ class Credentials:
         """
         docstring
         """
-        pass
+
+        # if isLoggedIn == True:
+        #     self.isLoggedIn = True
+
+        # else:
+        #     print("Check your log in credentials")
 
     def passwordGenerate(self):
         """
         docstring
         """
         pass
-    
+
     def copypassword(parameter_list):
         """
         docstring
@@ -120,4 +125,10 @@ class Credentials:
         pass
 
     if __name__ == "__main__":
-        pass
+
+        print("Welcome to password Locker.An application that will help you manage your passwords and even generate new passwords")
+        while True:
+            print("use these short code to proceed:\n cc:Create new Account\n lg:Login")
+            shortCode = input().lower()
+
+            if shortCode == 'cc':
