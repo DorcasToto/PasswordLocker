@@ -226,6 +226,15 @@ class Credentials:
                 print(Credentials.displayCredential(AccountName))       
 
             elif shortCode == 'dc':
+                print("Account name you would like to delete?")
+                AccountName = input()
+
+                if(Credentials.deleteCredential(AccountName))
+                print("Account Successfully deleted")
+
+                else:
+                    print("The account name does not exist!")
+            
                 
 
             elif shortCode == 'ex':
