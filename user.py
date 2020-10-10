@@ -221,10 +221,12 @@ class Credentials:
                     print("You do not have saved credentials at the moment ")    
 
             elif shortCode == 'fc':
-                pass
+                print("Account name: ")
+                AccountName = input()
+                print(Credentials.displayCredential(AccountName))       
 
             elif shortCode == 'dc':
-                pass
+                
 
             elif shortCode == 'ex':
                 pass
