@@ -99,7 +99,7 @@ class Credentials:
         """
         docstring
         """
-        pass
+        Credentials.credentials.remove(self)
 
     def loginWithCredential(self):
         """
