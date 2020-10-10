@@ -1,37 +1,44 @@
 class User:
 
-    def __init__(self):
-        pass
+    userList = []
 
-    def createUser(self, parameter_list):
+    def __init__(self, user_name, password):
+        self.user_name = user_name
+        self.password = password
+        isLoggedin = False
+
+    def createUser(self):
         """
         docstring
         """
-        pass
+        newUser = User(user_name, password)
+        return newUser
 
-    def login(parameter_list):
+    def login(self):
         """
         docstring
         """
-        pass
+        if userName == self.user_name and password == self.password:
+            isLoggedIn = True
 
-   def saveUser(parameter_list):
+    def saveUser(self):
         """
         docstring
         """
-        pass
+        User.userList.append(self)
 
-    def displayUser(parameter_list):
+    @classmethod
+    def displayUser(cls):
         """
         docstring
         """
-        pass
+        return cls.userList
 
-    def deleteUser(parameter_list):
+    def deleteUser(self):
         """
         docstring
         """
-        pass
+        User.userList.remove(self)
 
 
 class Credentials:
