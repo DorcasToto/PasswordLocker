@@ -5,7 +5,7 @@ class User:
     def __init__(self, user_name, password):
         self.user_name = user_name
         self.password = password
-        isLoggedin = False
+        self.isLoggedin = False
 
     def createUser(self):
         """
@@ -14,14 +14,15 @@ class User:
         newUser = User(user_name, password)
         return newUser
 
-    def login(self):
+    def login(self, isLoggedIn):
         """
         docstring
         """
-        if userName == self.user_name and password == self.password:
-            isLoggedIn = True
+        if isLoggedIn == True:
+            self.isLoggedIn = True
+
         else:
-            isLoggedIn = False    
+            print("Check your log in credentials")
 
     def saveUser(self):
         """
@@ -44,14 +45,14 @@ class User:
 
 
 class Credentials:
-    
+
     credentials = []
 
-    def __init__(self,account,accountUsername,accountPassword):
+    def __init__(self, accountName, accountUsername, accountPassword):
         """
         docstring
         """
-        self.account = account
+        self.accountName = accountName
         self.accountUsername = accountUsername
         self.accountPassword = accountPassword
 
@@ -61,36 +62,62 @@ class Credentials:
         """
         Credentials.credentials.append(self)
 
-    def searchCredential(parameter_list):
+    def searchCredential(self, accountName):
+        """
+        docstring
+        """
+        if Credentials.credentials:
+            for credential in Credentials.credentials:
+                if credential.accountName == accountName:
+                    return credential
+            print("No such an account")
+
+        else:
+            print("No credentials saved")
+
+    def displayCredential(self):
+        """
+        docstring
+        """
+        return Credentials.credentials
+
+    def credentialExist(self,accountName):
+        """
+        docstring
+        """
+
+        if Credentials.credentials:
+            for credential in Credentials.credentials:
+                if credential.accountName == accountName:
+                    return True
+            print("No such an account")
+
+        else:
+            print("No credentials saved")
+
+    def deleteCredential(self):
         """
         docstring
         """
         pass
 
-    def displayCredential(parameter_list):
+    def loginWithCredential(self):
         """
         docstring
         """
         pass
 
-    def credentialExist(parameter_list):
+    def passwordGenerate(self):
         """
         docstring
         """
         pass
-
-    def loginWithCredential(parameter_list):
+    
+    def copypassword(parameter_list):
         """
         docstring
         """
         pass
-
-    def passwordGenerate(parameter_list):
-        """
-        docstring
-        """
-        pass
-
 
     if __name__ == "__main__":
         pass
