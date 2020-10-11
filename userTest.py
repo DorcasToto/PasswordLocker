@@ -58,19 +58,19 @@ class TestUser(unittest.TestCase):
 
     def setUp(self):
         """
-        docstring
+        define the constructor
         """
         self.cred = Credentials("Facebook", "face", "123445")
 
     def tearDown(parameter_list):
         """
-        docstring
+        clear up during each test
         """
         pass
 
     def test_init(self):
         """
-        docstring
+        make sure the constructor is well initialized
         """
         self.assertEqual(self.cred.accountName, "Facebook")
         self.assertEqual(self.cred.accountUsername, "face")
@@ -78,7 +78,7 @@ class TestUser(unittest.TestCase):
 
     def test_save_multiples_cred(self):
         """
-        docstring
+        test for multiple credentials
         """
         self.cred.saveCredential()
         test_cred = Credentials("Facebook", "faceeeee", 12343)  # new contact
@@ -88,7 +88,8 @@ class TestUser(unittest.TestCase):
 
     def test_delete(self):
         """
-        docstring
+        test if the credential can be deleted
+        
         """
         self.cred.saveCredential()
         test_cred = Credentials("Facebook", "faceeeee", 12343)  # new contact
@@ -99,7 +100,7 @@ class TestUser(unittest.TestCase):
 
     def test_search(self):
         """
-        docstring
+        search a credential 
         """
         self.cred.searchCredential()
         test_cred = Credentials("Facebook", "faceeeee", 12343)  # new contact
@@ -110,7 +111,7 @@ class TestUser(unittest.TestCase):
 
     def test_display(self):
         """
-        docstring
+        method to test if credentials can be displayed
         """
         self.assertEqual(Credentials.displayCredential(), Credentials.credentials)
 

@@ -165,7 +165,8 @@ if __name__ == "__main__":
             User.saveUser(createUser)
             print("\n")
             print(
-                f"Hi {user_name} Your Account has been created sucessfully")
+                f"Hi {user_name} Your Account has been created sucessfully"/n)
+                print(f"Your username is {user_name} and password is {password}\n")
             break
 
         elif shortCode == 'lg':
@@ -247,7 +248,7 @@ if __name__ == "__main__":
                         f"Account Name : {accountName}\n Account Username : {accountuser}\n Account Password: {accountpass}\n")
 
             else:
-                print("You do not have saved credentials at the moment ")
+                print("You do not have saved credentials at the moment\n")
 
         elif shortCode == 'sc':
             print("Account name: ")
@@ -258,7 +259,7 @@ if __name__ == "__main__":
                     f"Account name: {searchAccount.accountName}\n Account's Username: {searchAccount.accountUsername}\n Account's Password : {searchAccount.accountPassword}")
 
             else:
-                print("No such an account name!")
+                print("No such an account name!\n")
 
         elif shortCode == 'dc':
             print("Account name you would like to delete?")
@@ -270,7 +271,6 @@ if __name__ == "__main__":
             else:
                 print("No such an account name")
 
-        elif shortCode == 'ex':
             print("Bye see you")
 
             break
