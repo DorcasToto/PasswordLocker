@@ -95,7 +95,8 @@ class Credentials:
         """
         return Credentials.credentials
 
-    def credentialExist(accountName):
+    @classmethod
+    def credentialExist(self, accountName):
         """
         method that checks if a credentials exists
         """
@@ -115,16 +116,6 @@ class Credentials:
         """
         Credentials.credentials.remove(self)
 
-        """
-        docstring
-        """
-
-        # if isLoggedIn == True:
-        #     self.isLoggedIn = True
-
-        # else:
-        #     print("Check your log in credentials")
-
     def passwordGenerate(self):
         """
         method that generate a random password
@@ -139,8 +130,8 @@ class Credentials:
 
 
 if __name__ == "__main__":
-    # a = Credentials.createCredential("","","")
-    # print(str(a))
+    a = Credentials.createCredential("", "", "")
+    print(str(a))
 
     print("Welcome to password Locker.An application that will help you manage your passwords and even generate new passwords.")
     while True:
@@ -277,7 +268,7 @@ if __name__ == "__main__":
                 print("Account Successfully deleted")
 
             else:
-                print("No Account such an account name")
+                print("No such an account name")
 
         elif shortCode == 'ex':
             print("Bye see you")
@@ -286,3 +277,10 @@ if __name__ == "__main__":
 
         else:
             print("invalid short code")
+
+    # newC = Credentials("a","b","c")
+    # newC.saveCredential()
+    # print(len(Credentials.credentials))
+    # print(newC.credentialExist("b"))
+
+    # print(len(Credentials.credentials))
