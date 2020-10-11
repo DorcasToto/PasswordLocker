@@ -67,8 +67,9 @@ class Credentials:
         """
         docstring
         """
-       newCredential = Credentials(accountName,accountUsername,accountPassword)
-       return newCredential
+        newCredential = Credentials(
+            accountName, accountUsername, accountPassword)
+        return newCredential
 
     def searchCredential(self, accountName):
         """
@@ -109,7 +110,6 @@ class Credentials:
         """
         Credentials.credentials.remove(self)
 
-    def loginWithCredential(self):
         """
         docstring
         """
@@ -137,7 +137,7 @@ class Credentials:
         print("Welcome to password Locker.An application that will help you manage your passwords and even generate new passwords.")
         while True:
             print(
-                "Use these short code to proceed:\n\n 1. cc-Create new Account\n 2. lg-Login\n 3. ex-exit")
+                "Use these short code to proceed:\n\n 1. cc-Create new Account\n 2. lg-Login\n 3. ex-Exit")
             shortCode = input().lower()
 
             if shortCode == 'cc':
@@ -145,8 +145,22 @@ class Credentials:
                 print("*"*50)
                 print("Username")
                 user_name = input()
-                print("Password")
-                password = input()
+
+                while True:
+                    print(
+                        "1. op - You want to type your own password?\n 2. sg - System generated passwords")
+                    passwordOption = input()
+
+                    if passwordOption == 'op':
+                        print("Your Password")
+                        password = input()
+                        break
+                    elif passwordOption == 'sg':
+                        Credentials.passwordGenerate()
+                        break
+
+                    else:
+                        print("Password Invalid")
 
                 createUser = User.createUser(user_name, password)
                 User.saveUser(createUser)
@@ -174,14 +188,15 @@ class Credentials:
             elif shortCode == 'ex':
 
                 print("Bye. See you some other time.")
+                break
 
             else:
                 print("Invalid shortcode\n")
 
         while True:
-            print("What would like to do?\n\n Use these shortcodes to proceed\n 1. nc - Create new Credential \n 2. ds - Display existing Credential\n 3. fc - Find a credential \n 4. dc = Delete an existing Credential \n 5. ex - Exit Application")
+            print("What would like to do?\n\n Use these shortcodes to proceed\n 1. nc - Create new Credential \n 2. ds - Display existing Credential\n 3. sc - Find a credential \n 4. dc -  Delete an existing Credential \n 5. ex - Exit Application")
 
-            shortCode == input()
+            shortCode = input().lower()
 
             if shortCode == 'nc':
                 print("New Credential Account")
@@ -191,53 +206,59 @@ class Credentials:
                 print("Account Name e.g Facebook")
                 AccountName = input()
 
-                print("Account UserName")
+                print("Account's UserName")
                 accountUserName = input()
 
                 while True:
-                    print("1. op - You want to type your own password?\n 2. sg - System generated passwords")
-                    accountPassword = input().lower()
+                    print(
+                        "1. op - You want to type your own password?\n 2. sg - System generated passwords")
 
-                    if accountPassword =='op':
+                    PasswordOption = input().lower()
+
+                    if PasswordOption == 'op':
+                        print("Account's Password :")
                         break
-                    elif accountPassword == 'sg':
+                    elif PasswordOption == 'sg':
                         Credentials.passwordGenerate()
                         break
 
                     else:
                         print("Password Invalid")
 
-                newC = Credentials.createCredential(AccountName,accountUserName,accountPassword)
+                newC = Credentials.createCredential(
+                    AccountName, accountUserName, accountPassword)
                 Credentials.saveCredential(newC)
-        
+
             elif shortCode == 'ds':
                 if Credentials.displayCredential():
 
                     print("List of your credentials include:")
-                    for credential in Credentials.credentials
-                    print (f"Account Name : {credential.accountName}\n Account Username : {credential.accountUserName}\n Account Password: {credential.accountPassword}\n")
-                    
-                else:
-                    print("You do not have saved credentials at the moment ")    
+                    for credential in Credentials.credentials:
+                        print(
+                            f"Account Name : {credential.accountName}\n Account Username : {credential.accountUserName}\n Account Password: {credential.accountPassword}\n")
 
-            elif shortCode == 'fc':
+                else:
+                    print("You do not have saved credentials at the moment ")
+
+            elif shortCode == 'sc':
                 print("Account name: ")
                 AccountName = input()
-                print(Credentials.displayCredential(AccountName))       
+                print(Credentials.displayCredential(AccountName))
 
             elif shortCode == 'dc':
                 print("Account name you would like to delete?")
                 AccountName = input()
 
-                if(Credentials.deleteCredential(AccountName))
-                print("Account Successfully deleted")
+                if(Credentials.deleteCredential(AccountName)):
+                    print("Account Successfully deleted")
 
                 else:
                     print("The account name does not exist!")
-            
-                
 
             elif shortCode == 'ex':
-                pass
+                print("Bye see you")
 
-            break
+                break
+
+            else:
+                print("invalid short code")
