@@ -165,8 +165,8 @@ if __name__ == "__main__":
             User.saveUser(createUser)
             print("\n")
             print(
-                f"Hi {user_name} Your Account has been created sucessfully"/n)
-                print(f"Your username is {user_name} and password is {password}\n")
+                f"Hi {user_name} Your Account has been created sucessfully\n")
+            print(f"Your username is {user_name} and password is {password}\n")
             break
 
         elif shortCode == 'lg':
@@ -194,7 +194,7 @@ if __name__ == "__main__":
             print("Invalid shortcode\n")
 
     while True:
-        print("What would like to do?\n\n Use these shortcodes to proceed\n 1. nc - Create new Credential \n 2. ds - Display existing Credential\n 3. sc - Find a credential \n 4. dc -  Delete an existing Credential \n 5. ex - Exit Application")
+        print("What would like to do?\n\n Use these shortcodes to proceed\n 1. nc - Store new Credential \n 2. ds - Display existing Credential\n 3. sc - Find a credential \n 4. dc -  Delete an existing Credential \n 5. ex - Exit Application")
 
         shortCode = input().lower()
 
