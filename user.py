@@ -76,12 +76,11 @@ class Credentials:
             accountName, accountUsername, accountPassword)
         return newCredential
 
-    @classmethod
-    def searchCredential(self, accountName, cls):
+    def searchCredential(accountName):
         """
         method that searches a new credential and returns the credential
         """
-        if cls.credentials:
+        if Credentials.credentials:
             for credential in Credentials.credentials:
                 if credential.accountName == accountName:
                     return credential
@@ -96,7 +95,7 @@ class Credentials:
         """
         return Credentials.credentials
 
-    def credentialExist(self, accountName):
+    def credentialExist(accountName):
         """
         method that checks if a credentials exists
         """
@@ -264,17 +263,21 @@ if __name__ == "__main__":
             AccountName = input()
             if Credentials.credentialExist(AccountName):
                 searchAccount = Credentials.searchCredential(AccountName)
-                print(f"Account name: {searchAccount.accountName}\n Account's Username: {searchAccount.accountUsername}\n Account's Password : {searchAccount.accountPassword}")
+                print(
+                    f"Account name: {searchAccount.accountName}\n Account's Username: {searchAccount.accountUsername}\n Account's Password : {searchAccount.accountPassword}")
+
+            else:
+                print("No such an account name!")
 
         elif shortCode == 'dc':
             print("Account name you would like to delete?")
             AccountName = input()
-
-            if(Credentials.deleteCredential(AccountName)):
+            if Credentials.credentialExist(AccountName):
+                Credentials.deleteCredential(AccountName)
                 print("Account Successfully deleted")
 
             else:
-                print("The account name does not exist!")
+                print("No Account such an account name")
 
         elif shortCode == 'ex':
             print("Bye see you")
