@@ -1,3 +1,8 @@
+import random
+import string
+import pyperclip
+
+
 class User:
 
     userList = []
@@ -115,11 +120,12 @@ class Credentials:
             if credential.accountUsername == accountName:
                 Credentials.credentials.remove(credential)
 
-    def passwordGenerate(self):
+    def passwordGenerate(stringLength=8):
         """
         method that generate a random password
         """
-        pass
+        password = string.ascii_lowercase + string.ascii_uppercase + "~!@#$%;:^&*"
+        return ''.join(random.choice(password) for i in range(int(stringLength)))
 
     def copypassword(parameter_list):
         """
@@ -154,7 +160,7 @@ if __name__ == "__main__":
                     password = input()
                     break
                 elif passwordOption == 'sg':
-                    Credentials.passwordGenerate()
+                    password = Credentials.passwordGenerate()
                     break
 
                 else:
@@ -183,8 +189,10 @@ if __name__ == "__main__":
                         print(user.login())
                     else:
                         print("password invalid")
+                        break
                 else:
                     print("username Invalid")
+                    break
 
             break
 
@@ -223,7 +231,7 @@ if __name__ == "__main__":
                     accountPassword = input()
                     break
                 elif PasswordOption == 'sg':
-                    Credentials.passwordGenerate()
+                    accountPassword = Credentials.passwordGenerate()
                     break
 
                 else:
@@ -280,7 +288,6 @@ if __name__ == "__main__":
 
         else:
             print("invalid short code")
-        
 
     # newC = Credentials("a","b","c")
     # newC.saveCredential()
