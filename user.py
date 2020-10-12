@@ -14,7 +14,7 @@ class User:
 
     def createUser(user_name, password):
         """
-        method to create new user
+        method to create new user account
         """
         newUser = User(user_name, password)
         return newUser
