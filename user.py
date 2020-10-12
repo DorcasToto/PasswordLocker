@@ -14,16 +14,11 @@ class User:
         newUser = User(user_name, password)
         return newUser
 
-    def login(user_name, ):
+    def login(self):
         """
         method that allows a user to log in after providing credentials
         """
-        if isLoggedIn == True:
-            self.isLoggedIn = True
-            print("Logged in Successfully")
-
-        else:
-            print("Check your log in credentials")
+        print("Logged in Successfully")
 
     def saveUser(self):
         """
@@ -93,7 +88,9 @@ class Credentials:
         """
         methods to display all saved credentials
         """
-        return Credentials.credentials
+        if (len(Credentials.credentials) > 0):
+
+            return Credentials.credentials
 
     @classmethod
     def credentialExist(self, accountName):
@@ -110,11 +107,13 @@ class Credentials:
         else:
             print("No credentials saved")
 
-    def deleteCredential(self):
+    def deleteCredential(accountName):
         """
         method that deletes a credential
         """
-        Credentials.credentials.remove(self)
+        for credential in Credentials.credentials:
+            if credential.accountUsername == accountName:
+                Credentials.credentials.remove(credential)
 
     def passwordGenerate(self):
         """
@@ -130,11 +129,11 @@ class Credentials:
 
 
 if __name__ == "__main__":
-    a = Credentials.createCredential("", "", "")
-    print(str(a))
-
+    # a = Credentials.createCredential("", "", "")
+    # print(str(a))
+    isTrue = True
     print("Welcome to password Locker.An application that will help you manage your passwords and even generate new passwords.")
-    while True:
+    while isTrue == True:
         print(
             "Use these short code to proceed:\n\n 1. cc-Create new Account\n 2. lg-Login\n 3. ex-Exit")
         shortCode = input().lower()
@@ -167,7 +166,6 @@ if __name__ == "__main__":
             print(
                 f"Hi {user_name} Your Account has been created sucessfully\n")
             print(f"Your username is {user_name} and password is {password}\n")
-            break
 
         elif shortCode == 'lg':
             print("*"*100)
@@ -181,8 +179,13 @@ if __name__ == "__main__":
 
             for user in User.userList:
                 if user_name == user.user_name:
-                    # User.login()
-                    print("Break")
+                    if user.password == password:
+                        print(user.login())
+                    else:
+                        print("password invalid")
+                else:
+                    print("username Invalid")
+
             break
 
         elif shortCode == 'ex':
@@ -271,12 +274,13 @@ if __name__ == "__main__":
             else:
                 print("No such an account name")
 
+        elif shortCode == 'ex':
             print("Bye see you")
-
-            break
+            isTrue = False
 
         else:
             print("invalid short code")
+        
 
     # newC = Credentials("a","b","c")
     # newC.saveCredential()
